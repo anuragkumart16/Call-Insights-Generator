@@ -4,7 +4,7 @@ import { dataLimit } from "./constants.js";
 
 
 const app = express()
-app.use(cors({origin: process.env.ALLOWED_ORIGINS}))
+app.use(cors({origin: process.env.ALLOWED_ORIGIN}))
 
 app.use(express.json({limit: dataLimit}))
 app.use(express.urlencoded({extended:true, limit: dataLimit}))
