@@ -74,9 +74,9 @@ const audioInsightViaLink = asyncHandler(async (req, res) => {
 
 const audioInsightViaFile = asyncHandler(async (req, res) => {
     if (!req.file) return errorResponse(400, 'No files found in request', {}, res);
+    const { agentId, customerId } = req.body
     if (!agentId || !customerId) return errorResponse(400, 'All Fields are Required', {}, res);
     console.log(new Date().toLocaleString(), { ...req.file, agentId: req.body.agentId, customerId: req.body.customerId });
-    const { agentId, customerId } = req.body
     let audioLink
     let transcript
     uploadOnCloudinary(req.file.path)
