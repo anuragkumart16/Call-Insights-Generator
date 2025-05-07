@@ -96,3 +96,33 @@
     color: red;
     font-size: 1.2rem;
 }
+
+@media screen and (max-width: 768px) {
+    .input-form {
+        width: 90vw;
+        padding: 1rem;
+    }
+
+    .dialog {
+        height: fit-content;
+        padding: 1rem;
+        
+    }
+    .home-div{
+        height: fit-content;
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .input-form {
+        width: 60vw;
+        padding: 1.5rem;
+    }
+
+    .dialog {
+        width: 90vw;
+        height: auto;
+        padding: 1.5rem;
+    }
+}
