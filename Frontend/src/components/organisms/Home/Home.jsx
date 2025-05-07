@@ -91,7 +91,7 @@ function Home() {
                                 className="text-input"
                             />
                         ) : (
-                            <input type="file" name="file" className="file-input" />
+                            <input type="file" name="file" className="file-input" accept="audio/*" />
                         )}
                     </div>
                     <div className="input-grp">
