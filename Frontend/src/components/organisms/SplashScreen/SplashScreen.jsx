@@ -19,7 +19,7 @@ function SplashScreen({ setter, errorSetter, errorTitle, errorMessage }) {
   }, [setter, errorSetter, errorTitle, errorMessage])
   return (
     <div className='splash-div'>
-      <h1>Call Insight Generator</h1>
+      <h1 className='heading'>Call Insight Generator</h1>
       <p>Starting server, it might take a minute</p>
       <PacmanLoader color='#E3E3E3' />
     </div>

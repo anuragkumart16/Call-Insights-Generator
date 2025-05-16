@@ -28,7 +28,7 @@ function Response({ response, setOpenDialog }) {
                 <h2>Request Info</h2>
                 <p>Agent Id: {response.agentId || 'N/A'}</p>
                 <p>Customer Id: {response.customerId || 'N/A'}</p>
-                <p>Audio Link: <a href={response.audioLink || null} target="_blank" rel="noreferrer">{response.audioLink || 'N/A'}</a></p>
+                <p >Audio Link: <a className='handlelink' href={response.audioLink || null} target="_blank" rel="noreferrer">{response.audioLink || 'N/A'}</a></p>
             </div>
 
             <div className='request-info'>

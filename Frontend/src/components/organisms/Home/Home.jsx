@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import getInsights from "../../../utils/getInsights";
 import { PacmanLoader } from "react-spinners";
@@ -40,12 +40,22 @@ function Home() {
         })
     }
 
+    useEffect(()=>{
+        const holder = document.querySelector('.dialog-box')
+        if (!holder) return ;
+        if (!response){
+            holder.style.height = '100vh'
+        }else{
+            holder.style.height = 'auto'
+        }
+    },[openDialog,response])
+
     return (
         <>
             {openDialog && (
                 <section className="dialog-box">
                     <div className="dialog">
-                        {response ? (<Response response={response} setOpenDialog={setOpenDialog}/>) : (<PacmanLoader color='#E3E3E3' size='30'/>)}
+                        {response ? (<Response response={response} setOpenDialog={setOpenDialog}/>) : (<PacmanLoader color='#E3E3E3'/>)}
                     </div>
                 </section>
             )}

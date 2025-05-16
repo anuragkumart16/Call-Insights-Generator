@@ -13,6 +13,7 @@ export default async function getInsights(agentId, customerId, audioLink, file) 
                 })
             })
             const data = await response.json()
+            console.log(data)
             return data
         } catch (error) {
             console.log(error)
@@ -30,6 +31,7 @@ export default async function getInsights(agentId, customerId, audioLink, file) 
                 body: formData
             })
             const data = await response.json()
+            console.log(data)
             return data
         } catch (error) {
             console.log(error)
