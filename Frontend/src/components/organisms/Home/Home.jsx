@@ -33,7 +33,7 @@ function Home() {
                 setOpenDialog(false)
                 return setMessage(`${data.message}!`)
             }
-            setResponse(JSON.stringify(data.data))
+            setResponse(data.data)
         })
         .catch(err=>{
             console.log(err)

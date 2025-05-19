@@ -3,6 +3,7 @@ import html2pdf from 'html2pdf.js'
 import './response.css'
 
 function Response({ response, setOpenDialog }) {
+    console.log(response)
     const [showMore, setShowMore] = useState(false)
     const DivRef = useRef(null)
 
@@ -40,43 +41,53 @@ function Response({ response, setOpenDialog }) {
 
             <div className='response-info'>
                 <h2>Transcription</h2>
+                {/* <p>{response.audioTranscript || 'N/A'}</p> */}
                 {showMore
                     ? <p>{response.audioTranscript} <span className='toggle-text' onClick={() => setShowMore(false)}>Show less</span></p>
                     : <p>{response.audioTranscript.slice(0, 500)}... <span className='toggle-text' onClick={() => setShowMore(true)}>Show More</span></p>
                 }
             </div>
 
-            <div className='response-info'>
-                <h2>Call Insights</h2>
-                <div className='insights-container'>
-                    {Object.entries(response.callInsight).map(([sectionKey, sectionValue]) => (
-                        <div key={sectionKey} className='insight-section'>
-                            <h2 className='insight-title'>{sectionKey.replaceAll('_', ' ')}</h2>
-                            <table className='insight-table'>
-                                <tbody>
-                                    {typeof sectionValue === 'object' && !Array.isArray(sectionValue) &&
-                                        Object.entries(sectionValue).map(([key, value], idx) => (
-                                            <tr key={key} className={idx % 2 === 0 ? 'even-row' : 'odd-row'}>
-                                                <td className='key-cell'>{key.replaceAll('_', ' ')}</td>
-                                                <td className='value-cell'>
-                                                    {Array.isArray(value) ? (
-                                                        <ul className='value-list'>
-                                                            {value.map((item, i) => (
-                                                                <li key={i}>{item}</li>
-                                                            ))}
-                                                        </ul>
-                                                    ) : (
-                                                        value
-                                                    )}
-                                                </td>
-                                            </tr>
-                                        ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    ))}
-                </div>
-            </div>
+           <div className="response-info">
+  <h2>Call Insights</h2>
+  <div className="insights-container">
+    {Object.entries(response.callInsight).map(([sectionKey, sectionValue]) => (
+      <div key={sectionKey} className="insight-section">
+        <h2 className="insight-title">{sectionKey.replaceAll('_', ' ')}</h2>
+        <table className="insight-table">
+          <tbody>
+            {typeof sectionValue === 'object' && !Array.isArray(sectionValue) &&
+              Object.entries(sectionValue).map(([key, value], idx) => (
+                <tr key={key} className={idx % 2 === 0 ? 'even-row' : 'odd-row'}>
+                  <td className="key-cell">{key.replaceAll('_', ' ')}</td>
+                  <td className="value-cell">
+                    {Array.isArray(value) ? (
+                      <ul className="value-list">
+                        {value.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : typeof value === 'object' && value !== null ? (
+                      <ul className="value-list">
+                        {Object.entries(value).map(([k, v], i) => (
+                          <li key={i}>
+                            <strong>{k.replaceAll('_', ' ')}:</strong> {v}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      value
+                    )}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    ))}
+  </div>
+</div>
+
         </div>
     )
 }
